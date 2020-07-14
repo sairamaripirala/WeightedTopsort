@@ -1,6 +1,6 @@
 import unittest
 
-from weighted_topsort import TopSort
+from weighted_topsort import CyclicGraphError, TopSort
 
 
 class Testing(unittest.TestCase):
@@ -21,3 +21,18 @@ class Testing(unittest.TestCase):
             results.append(r)
         for ex, res in zip(results, self.expected):
             self.assertEqual(list(res), list(ex))
+
+    def test_cyclic_graph(self):
+        graph = {'A': 'C', 'B': '', 'C': 'D',
+                 'D': 'A', 'E': 'C'}
+        weight = {'A': 10, 'B': 5, 'C': 17, 'D': 10, 'E': 10}
+        with self.assertRaises(CyclicGraphError):
+            TopSort(graph, weight)
+
+    def test_no_depds(self):
+        graph = {'A': 'C', 'B': '', 'C': 'D',
+                 'D': 'F', 'E': 'C'}
+        weight = {'A': 10, 'B': 5, 'C': 17, 'D': 10, 'E': 10}
+        result = TopSort(graph, weight)
+        self.expected = ['B', 'F', 'D', 'C', 'A', 'E']
+        self.assertEqual(self.expected, list(result))

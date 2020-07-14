@@ -84,8 +84,7 @@ class TopSort(list):
                                 self.sort_stack.append(str(ch_val))
                         elif not (ch_val in self.sort_stack):
                             raise CyclicGraphError(
-                                'Cycle detected for key {}'
-                                .format(str(ch_val)))
-
+                                'Cycle detected in path {} -> {}'
+                                .format(str(self.visit_stack), str(ch_val)))
                 self.sort_stack.append(str(key))
         return self.sort_stack
