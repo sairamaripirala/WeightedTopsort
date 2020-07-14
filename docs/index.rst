@@ -1,13 +1,20 @@
-![Testing](https://github.com/saripirala/weighted_topsort/workflows/Testing/badge.svg?branch=review)
-[![Documentation Status](https://readthedocs.org/projects/weighted_topsort/badge/?version=latest)](https://weighted_topsort.readthedocs.io/en/latest/?badge=latest)
-[![codecov](https://codecov.io/gh/saripirala/weighted_topsort/branch/review/graph/badge.svg)](https://codecov.io/gh/saripirala/weighted_topsort)
-
-# WeightedTopsort
+Weighted Topological Sorting
+============================================
 This an implementation of Topological sort using depth first search (DFS), with provision of weights/priority for nodes to be processed. There are multiple paths for a graph to be topologically sorted, this implementation allows the order to be tweaked using priority/weights to the nodes. The nodes with lowest weight is processed first.
+
+Installation
+------------
+``weighted-topsort`` is available on the Python package index and is installable via pip:
+
+.. code:: bash
+
+    pip3 install weighted-topsort
+
 
 ### Usage:
 
     Example 1:
+    
     >>> from weighted_topsort import TopSort
     >>> graph = {"A": "C", "B": "", "C": "D",
                  "D": "", "E": "C"}
@@ -17,6 +24,7 @@ This an implementation of Topological sort using depth first search (DFS), with 
     ['B', 'D', 'C', 'A', 'E']
 
     Example 2:
+    
     >>> gr={"N2": ["N11"], "N9": ["N11", "N8", "N10"],
             "N10": ["N11", "N3"], "N11": ["N7", "N5"],
             "N8": ["N7", "N3"]}
@@ -30,3 +38,17 @@ Input is a directed graph, must be a json with dependency or list of dependencie
 The weights for the nodes is also a JSON with node name as mentioned in the Graph and corresponding weight.
 
 The result is an iteratable sroted list.
+
+
+.. toctree::
+   :maxdepth: 1
+
+   weighted_topsort
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
