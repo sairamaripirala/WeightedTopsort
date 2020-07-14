@@ -38,7 +38,7 @@ jobs:
 
       - name: Upload Coverage
         uses: codecov/codecov-action@v1.0.2
-        if: github.event_name == 'push' && github.repository == 'saripirala/weighted_topsort'
+        if: github.event_name == 'push' && github.repository == 'saripirala/weighted-topsort'
         with:
           token: ${{secrets.CODECOV_TOKEN}}
           file: build/coverage.xml
