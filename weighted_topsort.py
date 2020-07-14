@@ -38,12 +38,12 @@ class TopSort(list):
         self.weights = weights.copy()
         self.visit_stack = deque()
         self.sort_stack = deque()
-        self.process_nodes(self.data)
+        self.__process_nodes(self.data)
 
     def __iter__(self):
         return iter(self.sort_stack)
 
-    def process_nodes(self, jsondata):
+    def __process_nodes(self, jsondata):
         keys_heap = [(self.weights.get(k, 1), k) for k in jsondata.keys()]
         heapq.heapify(keys_heap)
 
@@ -61,7 +61,7 @@ class TopSort(list):
                         _, ch_val = heapq.heappop(ch_keys_heap)
                         if not (ch_val in self.visit_stack):
                             if str(ch_val) in self.data.keys():
-                                self.process_nodes(
+                                self.__process_nodes(
                                     {ch_val: self.data.get(str(ch_val))})
                             else:
                                 self.visit_stack.append(ch_val)
