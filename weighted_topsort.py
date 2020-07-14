@@ -11,14 +11,18 @@ tag-value pairs.
 ``graph`` - The input graph datastructure to be sorted in the format of json.
             Examples :
             Example 1: {"A": "C", "B": "", "C": "D", "D": "", "E": "C"}
-            Example 2: {"N2": ["N11"], "N9": ["N11", "N8", "N10"],
-                        "N10": ["N11", "N3"], "N11": ["N7", "N5"],
-                        "N8": ["N7", "N3"]}
+
+            Example 2:
+            {"N2": ["N11"], "N9": ["N11", "N8", "N10"],
+            "N10": ["N11", "N3"], "N11": ["N7", "N5"],
+            "N8": ["N7", "N3"]}
 
 ``weights`` - The weights for nodes of the graph
               Example 1: {'A': 10, 'B': 5, 'C': 17, 'D': 10, 'E': 10}
-              Example 2: {‘N7’: 3, ‘N5’: 2, ‘N11’: 1, ‘N2’: 1,
-                          ‘N3’: 1, ‘N8’: 1, ‘N10’: 1, ‘N9’: 1}
+
+              Example 2:
+              {‘N7’: 3, ‘N5’: 2, ‘N11’: 1, ‘N2’: 1,
+              ‘N3’: 1, ‘N8’: 1, ‘N10’: 1, ‘N9’: 1}
 
 """
 
@@ -35,7 +39,9 @@ class CyclicGraphError(Exception):
 class TopSort(list):
     """
     Topological sort with weighted nodes
-    :param graph: Directed graph to be sorted in json format with dependencies as values to nodes
+        :param graph: Directed graph to be sorted in json format with
+                      dependencies as values to nodes
+
     :type  graph: json
     :param weights: The weights of nodes as json key value pairs
     :type weights: json

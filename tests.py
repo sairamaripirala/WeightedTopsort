@@ -5,8 +5,8 @@ from weighted_topsort import TopSort
 
 class Testing(unittest.TestCase):
     def test_weighted_topsort(self):
-        graph = {"A": "C", "B": "", "C": "D",
-                 "D": "", "E": "C"}
+        graph = {'A': 'C', 'B': '', 'C': 'D',
+                 'D': '', 'E': 'C'}
         weights = [{'A': 10, 'B': 5, 'C': 17, 'D': 10, 'E': 10},
                    {'A': 10, 'B': 5, 'C': 17, 'D': 10, 'E': 5},
                    {'A': 10, 'B': 25, 'C': 17, 'D': 10, 'E': 10}]
@@ -20,6 +20,4 @@ class Testing(unittest.TestCase):
             r = TopSort(graph, w)
             results.append(r)
         for ex, res in zip(results, self.expected):
-            self.assertEqual(
-                [i for i in res],
-                [i for i in ex])
+            self.assertEqual(list(res), list(ex))
