@@ -7,6 +7,7 @@ This an implementation of Topological sort using depth first search (DFS), with 
 
 ## Usage:
 
+    Example 1:
     >>> from weighted_topsort import TopSort
     >>> graph = {"A": "C", "B": "", "C": "D",
                  "D": "", "E": "C"}
@@ -15,14 +16,7 @@ This an implementation of Topological sort using depth first search (DFS), with 
     >>> print(list(result))
     ['B', 'D', 'C', 'A', 'E']
 
-The result is a tuple with minimum bin size required for n-1 bins and the optimized bins.
-
-Input bins must be a json with values as list of items in the bins. 
-The values must be presented as list even if there is only one item in the bin.
-
-The input bins can also have an empty bin.
-
-
+    Example 2:
     >>> gr={"N2": ["N11"], "N9": ["N11", "N8", "N10"],
             "N10": ["N11", "N3"], "N11": ["N7", "N5"],
             "N8": ["N7", "N3"]}
@@ -30,4 +24,9 @@ The input bins can also have an empty bin.
     >>> result = TopSort(gr, wt)
     >>> print(list(result))
     ['N5', 'N7', 'N11', 'N3', 'N10', 'N2', 'N8', 'N9']
-     
+
+Input is a directed graph, must be a json with dependency or list of dependencies for nodes.
+
+The weights for the nodes is also a JSON with node name as mentioned in the Graph and corresponding weight.
+
+The result is an iteratable sroted list.
